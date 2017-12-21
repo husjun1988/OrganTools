@@ -14,6 +14,9 @@ public class SystemConstant {
 
 	public static String DEFAULTPROPERTIES = "";
 
+	/** 登录标题*/
+	public static String login_title = "登录";
+
 	//加密KEY字符串
 	public static String KEY_CODE = "26069A11525400D1";//
 
