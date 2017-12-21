@@ -2,6 +2,7 @@ package com.gwxa.view;
 
 import com.gwxa.base.constant.SystemConstant;
 import com.gwxa.base.resources.Resources;
+import com.gwxa.controller.SysUserController;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -78,6 +79,9 @@ public class LoginView extends Application {
 		});
 
 		btn_login.setOnAction((ActionEvent e) -> {
+			if(SysUserController.Login(name.getText(), pwd.getText())) {
+				System.out.println("login success!");
+			}
 		});
 
 		pwd.setOnKeyReleased(new EventHandler<KeyEvent>() {
@@ -85,7 +89,9 @@ public class LoginView extends Application {
 			@Override
 			public void handle(KeyEvent event) {
 				if(event.getCode() == KeyCode.ENTER) {
-
+					if(SysUserController.Login(name.getText(), pwd.getText())) {
+						System.out.println("login success!");
+					}
 				}
 			}
 		});
@@ -104,4 +110,6 @@ public class LoginView extends Application {
 		stage.setScene(scene);
 		stage.show();
 	}
+
+
 }

@@ -1,4 +1,4 @@
-package com.gwxa.base.support;
+package com.gwxa.mapper;
 
 import java.util.List;
 
@@ -7,27 +7,28 @@ import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import com.gwxa.base.support.IMybatis;
 import com.gwxa.base.utils.Paramater;
+import com.gwxa.model.SysUser;
 
-public interface IMybatis<T extends AbstractModel> {
-
+public interface SysUserMapper {
 	/**
 	  * 根据ID获取一条记录
 	  * */
 	@Select("select * from ${tablename} where bianh = #{bh}")
-	public T find(Paramater para);
+	public SysUser find(Paramater para);
 
 	/**
 	 * 根据关键字查询一条记录
 	 * */
 	@Select("select * from ${tablename} ${keys}")
-	public T findByKeys(Paramater para);
+	public SysUser findByKeys(Paramater para);
 
 	/**
 	 * 查询集合
 	 * */
 	@Select("select * from ${tablename} ${keys}")
-	public List<T> selectByKeys(Paramater para);
+	public List<SysUser> selectByKeys(Paramater para);
 
 	/**
 	 * 修改一条记录

@@ -3,6 +3,7 @@ package com.gwxa.base.support;
 import java.util.List;
 
 import com.gwxa.base.utils.ClassUtil;
+import com.gwxa.base.utils.DBUtil;
 import com.gwxa.base.utils.Paramater;
 
 @SuppressWarnings("unchecked")
@@ -19,6 +20,8 @@ public class AbstractService<T extends AbstractModel> implements IService<T> {
 	private static final String BH = "bh";
 	/** model对象的主键集*/
 	private static final String BHS = "bhs";
+	/** 表示model对象的主键 */
+	private static final String BIANH = "bianh";
 
 	protected Class<?> entityType;
 
@@ -34,7 +37,11 @@ public class AbstractService<T extends AbstractModel> implements IService<T> {
 	}
 
 	protected IMybatis<T> getDao() {
-		return this.dao;
+		return DBUtil.getSession().getMapper(IMybatis.class);
+	}
+
+	public Paramater bulid(Object obj) {
+		return Paramater.bulidByObj(getTableName(), obj);
 	}
 
 	public String getTableName() {
@@ -58,13 +65,16 @@ public class AbstractService<T extends AbstractModel> implements IService<T> {
 
 	@Override
 	public Boolean update(T entity) {
-		Paramater para =bu
-		return null;
+		Paramater para = bulid(entity);
+		if (entity.getBianh() !=null) {
+			para.put(BIANH, entity.getBianh());
+		}
+		return getDao().updateByModel(para) >0;
 	}
 
 	@Override
 	public Boolean insert(T entity) {
-		return null;
+		return getDao().insert(bulid(entity)) > 0;
 	}
 
 }
