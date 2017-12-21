@@ -85,6 +85,7 @@ public class LoginView extends Application {
 			@Override
 			public void handle(KeyEvent event) {
 				if(event.getCode() == KeyCode.ENTER) {
+
 				}
 			}
 		});
