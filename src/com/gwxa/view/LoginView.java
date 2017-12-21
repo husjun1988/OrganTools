@@ -5,6 +5,7 @@ import com.gwxa.base.resources.Resources;
 import com.gwxa.controller.SysUserController;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -80,7 +81,12 @@ public class LoginView extends Application {
 
 		btn_login.setOnAction((ActionEvent e) -> {
 			if(SysUserController.Login(name.getText(), pwd.getText())) {
-				System.out.println("login success!");
+				Platform.runLater(new Runnable() {
+				    public void run() {
+				    	stage.hide();
+				        new MainView().start(new Stage());
+				    }
+				});
 			}
 		});
 
@@ -90,7 +96,12 @@ public class LoginView extends Application {
 			public void handle(KeyEvent event) {
 				if(event.getCode() == KeyCode.ENTER) {
 					if(SysUserController.Login(name.getText(), pwd.getText())) {
-						System.out.println("login success!");
+						Platform.runLater(new Runnable() {
+						    public void run() {
+						    	stage.hide();
+						        new MainView().start(new Stage());
+						    }
+						});
 					}
 				}
 			}
@@ -103,8 +114,8 @@ public class LoginView extends Application {
 		pane.getChildren().add(btn_login);
 		anPane.getChildren().add(pane);
 
-		stage.setTitle(SystemConstant.login_title);
-		stage.getIcons().add(Resources.getImage("logo.png"));
+		stage.setTitle(SystemConstant.LOGIN_TITLE);
+		stage.getIcons().add(Resources.getImage(SystemConstant.PIC_LOGIN_LOGO));
 		Scene scene = new Scene(anPane, 440, 247);
 		stage.resizableProperty().setValue(Boolean.FALSE);
 		stage.setScene(scene);

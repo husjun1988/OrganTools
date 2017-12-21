@@ -7,7 +7,6 @@ import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
-import com.gwxa.base.support.IMybatis;
 import com.gwxa.base.utils.Paramater;
 import com.gwxa.model.SysUser;
 
