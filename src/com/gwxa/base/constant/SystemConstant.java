@@ -18,7 +18,7 @@ public class SystemConstant {
 	public static String LOGIN_TITLE = "登录";
 
 	/** 主界面标题*/
-	public static String MAIN_TITLE = "主界面";
+	public static String MAIN_TITLE = "国卫统一机构工具";
 
 	//加密KEY字符串
 	public static String KEY_CODE = "26069A11525400D1";

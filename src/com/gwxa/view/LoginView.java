@@ -89,14 +89,7 @@ public class LoginView extends Application {
 		});
 
 		btn_login.setOnAction((ActionEvent e) -> {
-			if(SysUserController.Login(name.getText(), pwd.getText())) {
-				Platform.runLater(new Runnable() {
-				    public void run() {
-				    	stage.hide();
-				        new MainView().start(new Stage());
-				    }
-				});
-			}
+			login(stage, name.getText(), pwd.getText());
 		});
 
 		pwd.setOnKeyReleased(new EventHandler<KeyEvent>() {
@@ -104,14 +97,7 @@ public class LoginView extends Application {
 			@Override
 			public void handle(KeyEvent event) {
 				if(event.getCode() == KeyCode.ENTER) {
-					if(SysUserController.Login(name.getText(), pwd.getText())) {
-						Platform.runLater(new Runnable() {
-						    public void run() {
-						    	stage.hide();
-						        new MainView().start(new Stage());
-						    }
-						});
-					}
+					login(stage, name.getText(), pwd.getText());
 				}
 			}
 		});
@@ -132,6 +118,19 @@ public class LoginView extends Application {
 		stage.show();
 	}
 
+
+	public void login(Stage stage,String account, String pwd) {
+		if(SysUserController.Login(account, pwd)) {
+			Platform.runLater(new Runnable() {
+			    public void run() {
+			    	stage.hide();
+			        new MainView().start(new Stage());
+			    }
+			});
+		} else {
+			showErrorMsg("登陆失败，账号或密码错误");
+		}
+	}
 
 	public void showErrorMsg(String msg) {
 		errorMsg.setText(msg);

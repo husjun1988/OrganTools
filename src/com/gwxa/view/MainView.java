@@ -1,17 +1,14 @@
 package com.gwxa.view;
 
-import java.nio.channels.AcceptPendingException;
 
 import com.gwxa.base.constant.SystemConstant;
 import com.gwxa.base.resources.Resources;
-import com.gwxa.controller.SysUserController;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.effect.DropShadow;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
@@ -37,8 +34,6 @@ public class MainView extends Application {
 		AnchorPane anPane = new AnchorPane();
 
 		Pane pane = new Pane();
-		pane.setLayoutX(5);
-		pane.setLayoutY(5);
 		pane.setMinSize(850, 500);
 		pane.setBackground(new Background(new BackgroundImage(Resources.getImage(SystemConstant.PIC_MAINBG), null, null, null, null)));
 
@@ -103,7 +98,7 @@ public class MainView extends Application {
 
 		stage.setTitle(SystemConstant.MAIN_TITLE);
 		stage.getIcons().add(Resources.getImage(SystemConstant.PIC_LOGIN_LOGO));
-		Scene scene = new Scene(anPane, 850, 500);
+		Scene scene = new Scene(anPane, 840, 490);
 		stage.resizableProperty().setValue(Boolean.FALSE);
 		stage.setScene(scene);
 		stage.show();
