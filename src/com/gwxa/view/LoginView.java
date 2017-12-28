@@ -21,9 +21,13 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class LoginView extends Application {
+
+	private Text errorMsg;
 
 	@Override
 	public void start(Stage stage) {
@@ -65,10 +69,15 @@ public class LoginView extends Application {
 		pwd.setLayoutY(153);
 		pwd.setMinSize(195, 35);
 
+		errorMsg = new Text();
+		errorMsg.setLayoutX(110);
+		errorMsg.setLayoutY(207);
+		errorMsg.setFill(Color.RED);
+
 		Button btn_login = new Button();
 		btn_login.setBackground(new Background(new BackgroundImage(Resources.getImage("login/login.png"), null, null, null, null)));
 		btn_login.setLayoutX(110.0);
-		btn_login.setLayoutY(198.0);
+		btn_login.setLayoutY(218.0);
 		btn_login.setMinSize(236, 35);
 
 		btn_login.addEventHandler(MouseEvent.MOUSE_ENTERED, (MouseEvent e) -> {
@@ -111,16 +120,20 @@ public class LoginView extends Application {
 		pane.getChildren().add(lab_pwd);
 		pane.getChildren().add(name);
 		pane.getChildren().add(pwd);
+		pane.getChildren().add(errorMsg);
 		pane.getChildren().add(btn_login);
 		anPane.getChildren().add(pane);
 
 		stage.setTitle(SystemConstant.LOGIN_TITLE);
 		stage.getIcons().add(Resources.getImage(SystemConstant.PIC_LOGIN_LOGO));
-		Scene scene = new Scene(anPane, 440, 247);
+		Scene scene = new Scene(anPane, 440, 257);
 		stage.resizableProperty().setValue(Boolean.FALSE);
 		stage.setScene(scene);
 		stage.show();
 	}
 
 
+	public void showErrorMsg(String msg) {
+		errorMsg.setText(msg);
+	}
 }

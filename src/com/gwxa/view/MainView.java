@@ -8,6 +8,7 @@ import com.gwxa.controller.SysUserController;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
+import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.effect.DropShadow;
@@ -43,16 +44,17 @@ public class MainView extends Application {
 
 		Button btn_user = new Button();
 		btn_user.setBackground(new Background(new BackgroundImage(Resources.getImage(SystemConstant.PIC_ACCOUNT), null, null, null, null)));
+		btn_user.setCursor(Cursor.HAND);
 		btn_user.setLayoutX(204.0);
 		btn_user.setLayoutY(226.0);
 		btn_user.setMinSize(95, 145);
 
 		btn_user.addEventHandler(MouseEvent.MOUSE_ENTERED, (MouseEvent e) -> {
-			btn_user.setEffect(new DropShadow());
+			btn_user.setBackground(new Background(new BackgroundImage(Resources.getImage(SystemConstant.PIC_ACCOUNT_HOVER), null, null, null, null)));
 		});
 
 		btn_user.addEventHandler(MouseEvent.MOUSE_EXITED, (MouseEvent e) -> {
-			btn_user.setEffect(null);
+			btn_user.setBackground(new Background(new BackgroundImage(Resources.getImage(SystemConstant.PIC_ACCOUNT), null, null, null, null)));
 		});
 
 		btn_user.setOnAction((ActionEvent e) -> {
@@ -60,16 +62,17 @@ public class MainView extends Application {
 
 		Button btn_area = new Button();
 		btn_area.setBackground(new Background(new BackgroundImage(Resources.getImage(SystemConstant.PIC_AREA), null, null, null, null)));
+		btn_area.setCursor(Cursor.HAND);
 		btn_area.setLayoutX(386.0);
 		btn_area.setLayoutY(226.0);
 		btn_area.setMinSize(95, 145);
 
 		btn_area.addEventHandler(MouseEvent.MOUSE_ENTERED, (MouseEvent e) -> {
-			btn_area.setEffect(new DropShadow());
+			btn_area.setBackground(new Background(new BackgroundImage(Resources.getImage(SystemConstant.PIC_AREA_HOVER), null, null, null, null)));
 		});
 
 		btn_area.addEventHandler(MouseEvent.MOUSE_EXITED, (MouseEvent e) -> {
-			btn_area.setEffect(null);
+			btn_area.setBackground(new Background(new BackgroundImage(Resources.getImage(SystemConstant.PIC_AREA), null, null, null, null)));
 		});
 
 		btn_area.setOnAction((ActionEvent e) -> {
@@ -77,16 +80,17 @@ public class MainView extends Application {
 
 		Button btn_organ = new Button();
 		btn_organ.setBackground(new Background(new BackgroundImage(Resources.getImage(SystemConstant.PIC_ORGAN), null, null, null, null)));
+		btn_organ.setCursor(Cursor.HAND);
 		btn_organ.setLayoutX(558.0);
 		btn_organ.setLayoutY(226.0);
 		btn_organ.setMinSize(95, 145);
 
 		btn_organ.addEventHandler(MouseEvent.MOUSE_ENTERED, (MouseEvent e) -> {
-			btn_organ.setEffect(new DropShadow());
+			btn_organ.setBackground(new Background(new BackgroundImage(Resources.getImage(SystemConstant.PIC_ORGAN_HOVER), null, null, null, null)));
 		});
 
 		btn_organ.addEventHandler(MouseEvent.MOUSE_EXITED, (MouseEvent e) -> {
-			btn_organ.setEffect(null);
+			btn_organ.setBackground(new Background(new BackgroundImage(Resources.getImage(SystemConstant.PIC_ORGAN), null, null, null, null)));
 		});
 
 		btn_organ.setOnAction((ActionEvent e) -> {

@@ -65,6 +65,15 @@ public class SystemConstant {
 	/** 组织结构*/
 	public static String PIC_ORGAN = "main/organ.png";
 
+	/** 账号管理*/
+	public static String PIC_ACCOUNT_HOVER = "main/accounthover.png";
+
+	/** 区域管理*/
+	public static String PIC_AREA_HOVER = "main/areahover.png";
+
+	/** 组织结构*/
+	public static String PIC_ORGAN_HOVER = "main/organhover.png";
+
 	/** 组织机构模板*/
 	public static String FILE_ORGAN= "/com/gwxa/files/organ.xlsx";
 
