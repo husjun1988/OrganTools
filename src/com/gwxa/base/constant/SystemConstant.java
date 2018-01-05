@@ -77,6 +77,21 @@ public class SystemConstant {
 	/** 组织机构模板*/
 	public static String FILE_ORGAN= "/com/gwxa/files/organ.xlsx";
 
+	/** 添加按钮*/
+	public static String BTN_ADD = "button/add.png";
+
+	/** 添加按钮选中状态*/
+	public static String BTN_ADD_HOVER = "button/addh.png";
+
+	/** 导出背景图*/
+	public static String BG_EXPORT = "export/bg_export.jpg";
+
+	/** 导出背景图*/
+	public static String BTN_EXPORT = "button/export.png";
+
+	/** 导出背景图*/
+	public static String BTN_EXPORT_HOVER = "button/exporth.png";
+
 	/** 初始化密码*/
 	public static String INIT_PASSWORD = "123456";
 }

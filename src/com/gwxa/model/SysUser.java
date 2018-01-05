@@ -71,7 +71,10 @@ public class SysUser extends AbstractModel{
 	/** 内部状态1：正常2：删除 */
 	private Integer neibzt;
 
-
+	public SysUser(String zhangh, String mim) {
+		this.zhangh = zhangh;
+		this.mim = mim;
+	}
 
 	/**
 	 * 获取[登录账户]

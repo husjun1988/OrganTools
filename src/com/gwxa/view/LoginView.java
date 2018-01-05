@@ -2,6 +2,7 @@ package com.gwxa.view;
 
 import com.gwxa.base.constant.SystemConstant;
 import com.gwxa.base.resources.Sources;
+import com.gwxa.base.support.BaseView;
 import com.gwxa.controller.SysUserController;
 
 import javafx.application.Application;
@@ -25,7 +26,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class LoginView extends Application {
+public class LoginView extends BaseView {
 
 	private Text errorMsg;
 
@@ -111,9 +112,10 @@ public class LoginView extends Application {
 		anPane.getChildren().add(pane);
 
 		stage.setTitle(SystemConstant.LOGIN_TITLE);
-		stage.getIcons().add(Sources.getImage(SystemConstant.PIC_LOGIN_LOGO));
+		//stage.getIcons().add(Sources.getImage(SystemConstant.PIC_LOGIN_LOGO));
 		Scene scene = new Scene(anPane, 440, 257);
 		stage.resizableProperty().setValue(Boolean.FALSE);
+		setCenter(stage, 440, 257);
 		stage.setScene(scene);
 		stage.show();
 	}
