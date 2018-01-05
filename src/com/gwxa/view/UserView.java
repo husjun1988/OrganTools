@@ -1,7 +1,7 @@
 package com.gwxa.view;
 
 import com.gwxa.base.constant.SystemConstant;
-import com.gwxa.base.resources.Resources;
+import com.gwxa.base.resources.Sources;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -27,7 +27,7 @@ public class UserView extends Application {
 		AnchorPane anPane = new AnchorPane();
 
 		stage.setTitle(SystemConstant.MAIN_TITLE);
-		stage.getIcons().add(Resources.getImage(SystemConstant.PIC_LOGIN_LOGO));
+		stage.getIcons().add(Sources.getImage(SystemConstant.PIC_LOGIN_LOGO));
 		Scene scene = new Scene(anPane, 840, 490);
 		stage.resizableProperty().setValue(Boolean.FALSE);
 		stage.setScene(scene);

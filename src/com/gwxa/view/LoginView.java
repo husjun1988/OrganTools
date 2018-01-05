@@ -1,7 +1,7 @@
 package com.gwxa.view;
 
 import com.gwxa.base.constant.SystemConstant;
-import com.gwxa.base.resources.Resources;
+import com.gwxa.base.resources.Sources;
 import com.gwxa.controller.SysUserController;
 
 import javafx.application.Application;
@@ -43,28 +43,28 @@ public class LoginView extends Application {
 
 		Pane pane = new Pane();
 		pane.setMinSize(453, 267);
-		pane.setBackground(new Background(new BackgroundImage(Resources.getImage("login/bg.jpg"), null, null, null, null)));
+		pane.setBackground(new Background(new BackgroundImage(Sources.getImage("login/bg.jpg"), null, null, null, null)));
 
 		Label lab_name = new Label();
-		lab_name.setBackground(new Background(new BackgroundImage(Resources.getImage("login/user.png"), null, null, null, null)));
+		lab_name.setBackground(new Background(new BackgroundImage(Sources.getImage("login/user.png"), null, null, null, null)));
 		lab_name.setLayoutX(110);
 		lab_name.setLayoutY(111);
 		lab_name.setMinSize(41, 35);
 
 		Label lab_pwd = new Label();
-		lab_pwd.setBackground(new Background(new BackgroundImage(Resources.getImage("login/pwd.png"), null, null, null, null)));
+		lab_pwd.setBackground(new Background(new BackgroundImage(Sources.getImage("login/pwd.png"), null, null, null, null)));
 		lab_pwd.setLayoutX(110);
 		lab_pwd.setLayoutY(153);
 		lab_pwd.setMinSize(41, 35);
 
 		TextField name = new TextField();
-		name.setBackground(new Background(new BackgroundImage(Resources.getImage("login/input.png"), null, null, null, null)));
+		name.setBackground(new Background(new BackgroundImage(Sources.getImage("login/input.png"), null, null, null, null)));
 		name.setLayoutX(151);
 		name.setLayoutY(111);
 		name.setMinSize(195, 35);
 
 		PasswordField pwd = new PasswordField();
-		pwd.setBackground(new Background(new BackgroundImage(Resources.getImage("login/input.png"), null, null, null, null)));
+		pwd.setBackground(new Background(new BackgroundImage(Sources.getImage("login/input.png"), null, null, null, null)));
 		pwd.setLayoutX(151);
 		pwd.setLayoutY(153);
 		pwd.setMinSize(195, 35);
@@ -75,7 +75,7 @@ public class LoginView extends Application {
 		errorMsg.setFill(Color.RED);
 
 		Button btn_login = new Button();
-		btn_login.setBackground(new Background(new BackgroundImage(Resources.getImage("login/login.png"), null, null, null, null)));
+		btn_login.setBackground(new Background(new BackgroundImage(Sources.getImage("login/login.png"), null, null, null, null)));
 		btn_login.setLayoutX(110.0);
 		btn_login.setLayoutY(218.0);
 		btn_login.setMinSize(236, 35);
@@ -111,7 +111,7 @@ public class LoginView extends Application {
 		anPane.getChildren().add(pane);
 
 		stage.setTitle(SystemConstant.LOGIN_TITLE);
-		stage.getIcons().add(Resources.getImage(SystemConstant.PIC_LOGIN_LOGO));
+		stage.getIcons().add(Sources.getImage(SystemConstant.PIC_LOGIN_LOGO));
 		Scene scene = new Scene(anPane, 440, 257);
 		stage.resizableProperty().setValue(Boolean.FALSE);
 		stage.setScene(scene);
