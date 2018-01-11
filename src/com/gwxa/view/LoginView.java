@@ -112,7 +112,7 @@ public class LoginView extends BaseView {
 		anPane.getChildren().add(pane);
 
 		stage.setTitle(SystemConstant.LOGIN_TITLE);
-		//stage.getIcons().add(Sources.getImage(SystemConstant.PIC_LOGIN_LOGO));
+		stage.getIcons().add(Sources.getImage(SystemConstant.PIC_LOGIN_LOGO));
 		Scene scene = new Scene(anPane, 440, 257);
 		stage.resizableProperty().setValue(Boolean.FALSE);
 		setCenter(stage, 440, 257);

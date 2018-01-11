@@ -27,7 +27,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
-public class UserView extends BaseView {
+public class Areaview extends BaseView {
 	private Pagination pagination;
 
 	final ObservableList<SysUser> data = FXCollections.observableArrayList(
