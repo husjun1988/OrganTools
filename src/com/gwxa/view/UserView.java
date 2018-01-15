@@ -1,8 +1,12 @@
 package com.gwxa.view;
 
+import java.util.List;
+
 import com.gwxa.base.constant.SystemConstant;
 import com.gwxa.base.resources.Sources;
 import com.gwxa.base.support.BaseView;
+import com.gwxa.base.utils.Paramater;
+import com.gwxa.controller.SysUserController;
 import com.gwxa.model.SysUser;
 
 import javafx.application.Application;
@@ -31,7 +35,6 @@ public class UserView extends BaseView {
 	private Pagination pagination;
 
 	final ObservableList<SysUser> data = FXCollections.observableArrayList(
-		new SysUser("123", "123")
 	);
 
 	@Override
@@ -52,6 +55,9 @@ public class UserView extends BaseView {
     }
 
 	public VBox createPage(int pageIndex) {
+
+		data.addAll(SysUserController.list(new Paramater()));
+
         int lastIndex = 0;
         int displace = data.size() % rowsPerPage();
         if (displace > 0) {
@@ -66,52 +72,23 @@ public class UserView extends BaseView {
 
         for (int i = page; i < page + itemsPerPage(); i++) {
             TableView<SysUser> table = new TableView<SysUser>();
-            table.setMinSize(1024, 525);
-            TableColumn<SysUser, String> numCol = new TableColumn<SysUser, String>("账号");
-            numCol.setCellValueFactory(new PropertyValueFactory<SysUser, String>("zhangh"));
-            numCol.setMinWidth(30);
+            //table.setMinSize(1024, 525);
+            TableColumn<SysUser, String> colAcc = new TableColumn<SysUser, String>("账号");
+            colAcc.setCellValueFactory(new PropertyValueFactory<SysUser, String>("zhangh"));
+            //colAcc.setMinWidth(30);
 
-            TableColumn<SysUser, String> Col_Area = new TableColumn<SysUser, String>("密码");
-            Col_Area.setCellValueFactory(new PropertyValueFactory<SysUser, String>("mim"));
-            Col_Area.setMinWidth(120);
+            TableColumn<SysUser, String> colName = new TableColumn<SysUser, String>("姓名");
+            colName.setCellValueFactory(new PropertyValueFactory<SysUser, String>("xingm"));
+            //colName.setMinWidth(120);
 
-            TableColumn<SysUser, String> Col_Office = new TableColumn<SysUser, String>("单位名称");
-            Col_Office.setCellValueFactory(new PropertyValueFactory<SysUser, String>("office"));
-            Col_Office.setMinWidth(120);
+            TableColumn<SysUser, String> colType = new TableColumn<SysUser, String>("分类");
+            colType.setCellValueFactory(new PropertyValueFactory<SysUser, String>("fenl"));
+            //colType.setMinWidth(120);
 
-            TableColumn<SysUser, String> Col_Name = new TableColumn<SysUser, String>("姓名");
-            Col_Name.setCellValueFactory(new PropertyValueFactory<SysUser, String>("name"));
-            Col_Name.setMinWidth(80);
+            TableColumn<SysUser, String> colIsable = new TableColumn<SysUser, String>("是否启用");
+            colIsable.setCellValueFactory(new PropertyValueFactory<SysUser, String>("youx"));
 
-            TableColumn<SysUser, String> Col_Role = new TableColumn<SysUser, String>("国籍");
-            Col_Role.setCellValueFactory(new PropertyValueFactory<SysUser, String>("country"));
-            Col_Role.setMinWidth(80);
-
-            TableColumn<SysUser, String> Col_Sex = new TableColumn<SysUser, String>("性别");
-            Col_Sex.setCellValueFactory(new PropertyValueFactory<SysUser, String>("sex"));
-            Col_Sex.setMinWidth(80);
-
-            TableColumn<SysUser, String> Col_License = new TableColumn<SysUser, String>("身份证");
-            Col_License.setCellValueFactory(new PropertyValueFactory<SysUser, String>("license"));
-            Col_License.setMinWidth(180);
-
-            TableColumn<SysUser, String> Col_smgw = new TableColumn<SysUser, String>("涉密岗位");
-            Col_smgw.setCellValueFactory(new PropertyValueFactory<SysUser, String>("smgw"));
-            Col_smgw.setMinWidth(100);
-
-            TableColumn<SysUser, String> Col_smlevel = new TableColumn<SysUser, String>("涉密等级");
-            Col_smlevel.setCellValueFactory(new PropertyValueFactory<SysUser, String>("smdj"));
-            Col_smlevel.setMinWidth(100);
-
-            TableColumn<SysUser, String> Col_isChecked = new TableColumn<SysUser, String>("是否审查");
-            Col_isChecked.setCellValueFactory(new PropertyValueFactory<SysUser, String>("isChecked"));
-            Col_isChecked.setMinWidth(80);
-
-            TableColumn<SysUser, String> Col_InputDate = new TableColumn<SysUser, String>("上报日期");
-            Col_InputDate.setCellValueFactory(new PropertyValueFactory<SysUser, String>("inputDate"));
-            Col_InputDate.setMinWidth(120);
-
-            table.getColumns().addAll(numCol, Col_Area, Col_Office, Col_Name, Col_Role, Col_Sex, Col_License, Col_smgw, Col_smlevel, Col_isChecked, Col_InputDate);
+            table.getColumns().addAll(colAcc, colName, colType, colIsable);
             if (lastIndex == pageIndex) {
                 table.setItems(FXCollections.observableArrayList(data.subList(pageIndex * rowsPerPage(), pageIndex * rowsPerPage() + displace)));
             } else {
@@ -128,7 +105,7 @@ public class UserView extends BaseView {
 	 * */
 	public void initAndDisplayUI(Stage stage) {
 		ToolBar toolBar = new ToolBar();
-		toolBar.setMinWidth(1080);
+		toolBar.setMinWidth(620);
 
 		Button btn_add = new Button();
 		btn_add.setBackground(new Background(new BackgroundImage(Sources.getImage(SystemConstant.BTN_ADD), null, null, null, null)));
@@ -151,7 +128,29 @@ public class UserView extends BaseView {
 			});
 		});
 
+		Button btn_edit = new Button();
+		btn_edit.setBackground(new Background(new BackgroundImage(Sources.getImage(SystemConstant.BTN_EDIT), null, null, null, null)));
+		btn_edit.setMinSize(63, 30);
+		btn_edit.setCursor(Cursor.HAND);
+
+		btn_edit.addEventHandler(MouseEvent.MOUSE_ENTERED, (MouseEvent e) -> {
+			btn_edit.setBackground(new Background(new BackgroundImage(Sources.getImage(SystemConstant.BTN_EDIT_HOVER), null, null, null, null)));
+		});
+
+		btn_edit.addEventHandler(MouseEvent.MOUSE_EXITED, (MouseEvent e) -> {
+			btn_edit.setBackground(new Background(new BackgroundImage(Sources.getImage(SystemConstant.BTN_EDIT), null, null, null, null)));
+		});
+
+		btn_edit.setOnAction((ActionEvent e) -> {
+			Platform.runLater(new Runnable() {
+			    public void run() {
+
+			    }
+			});
+		});
+
 		toolBar.getItems().add(btn_add);
+		toolBar.getItems().add(btn_edit);
 
 		pagination = new Pagination((data.size() / rowsPerPage() + 1), 0);
         //   pagination = new Pagination(20 , 0);
@@ -168,7 +167,7 @@ public class UserView extends BaseView {
         });
 
         AnchorPane anPane = new AnchorPane();
-        //AnchorPane.setTopAnchor(pagination, 10.0);
+        AnchorPane.setTopAnchor(pagination, 33.0);
         AnchorPane.setRightAnchor(pagination, 0.0);
         AnchorPane.setBottomAnchor(pagination, 10.0);
         AnchorPane.setLeftAnchor(pagination, 0.0);
@@ -177,9 +176,9 @@ public class UserView extends BaseView {
 
 		stage.setTitle(SystemConstant.MAIN_TITLE);
 		stage.getIcons().add(Sources.getImage(SystemConstant.PIC_LOGIN_LOGO));
-		Scene scene = new Scene(anPane, 1068, 624);
+		Scene scene = new Scene(anPane, 600, 400);
 		stage.resizableProperty().setValue(Boolean.FALSE);
-		setCenter(stage, 1080, 635);
+		setCenter(stage, 600, 400);
 		stage.setScene(scene);
 		stage.show();
 	}

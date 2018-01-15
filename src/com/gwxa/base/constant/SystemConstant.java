@@ -83,6 +83,12 @@ public class SystemConstant {
 	/** 添加按钮选中状态*/
 	public static String BTN_ADD_HOVER = "button/addh.png";
 
+	/** 修改按钮*/
+	public static String BTN_EDIT = "button/edit.png";
+
+	/** 添加按钮选中状态*/
+	public static String BTN_EDIT_HOVER = "button/edith.png";
+
 	/** 导出背景图*/
 	public static String BG_EXPORT = "export/bg_export.jpg";
 

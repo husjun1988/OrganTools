@@ -59,7 +59,7 @@ public class SysUser extends AbstractModel{
 	/** 最后访问时间 */
 	private String zuihfwsj;
 	/** 有效：1-有效，2-无效 */
-	private Integer youx;
+	private String youx;
 	/** 排序 */
 	private Integer pai;
 	/** 删除标记:1-正常，2-删除 */
@@ -73,9 +73,11 @@ public class SysUser extends AbstractModel{
 
 	public SysUser() {}
 
-	public SysUser(String zhangh, String mim) {
+	public SysUser(String zhangh, String xingm, String fenl, String youx) {
 		this.zhangh = zhangh;
-		this.mim = mim;
+		this.xingm = xingm;
+		this.fenl = fenl;
+		this.youx = youx;
 	}
 
 	/**
@@ -121,7 +123,7 @@ public class SysUser extends AbstractModel{
 	 * 获取[分类：1保密局端2机关单位]
 	 */
 	public String getFenl() {
-		return fenl;
+		return fenl.equals("1") ? "管理员" : "普通人员";
 	}
 	/**
 	 * 设置[分类：1保密局端2机关单位]
@@ -328,13 +330,13 @@ public class SysUser extends AbstractModel{
 	/**
 	 * 获取[有效：1-有效，2-无效]
 	 */
-	public Integer getYoux() {
-		return youx;
+	public String getYoux() {
+		return youx.equals("1") ? "启用" : "禁用";
 	}
 	/**
 	 * 设置[有效：1-有效，2-无效]
 	 */
-	public void setYoux(Integer youx) {
+	public void setYoux(String youx) {
 		this.youx = youx;
 	}
 

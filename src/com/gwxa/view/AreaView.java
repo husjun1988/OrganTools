@@ -27,11 +27,10 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
-public class Areaview extends BaseView {
+public class AreaView extends BaseView {
 	private Pagination pagination;
 
 	final ObservableList<SysUser> data = FXCollections.observableArrayList(
-		new SysUser("123", "123")
 	);
 
 	@Override
@@ -71,47 +70,8 @@ public class Areaview extends BaseView {
             numCol.setCellValueFactory(new PropertyValueFactory<SysUser, String>("zhangh"));
             numCol.setMinWidth(30);
 
-            TableColumn<SysUser, String> Col_Area = new TableColumn<SysUser, String>("密码");
-            Col_Area.setCellValueFactory(new PropertyValueFactory<SysUser, String>("mim"));
-            Col_Area.setMinWidth(120);
 
-            TableColumn<SysUser, String> Col_Office = new TableColumn<SysUser, String>("单位名称");
-            Col_Office.setCellValueFactory(new PropertyValueFactory<SysUser, String>("office"));
-            Col_Office.setMinWidth(120);
-
-            TableColumn<SysUser, String> Col_Name = new TableColumn<SysUser, String>("姓名");
-            Col_Name.setCellValueFactory(new PropertyValueFactory<SysUser, String>("name"));
-            Col_Name.setMinWidth(80);
-
-            TableColumn<SysUser, String> Col_Role = new TableColumn<SysUser, String>("国籍");
-            Col_Role.setCellValueFactory(new PropertyValueFactory<SysUser, String>("country"));
-            Col_Role.setMinWidth(80);
-
-            TableColumn<SysUser, String> Col_Sex = new TableColumn<SysUser, String>("性别");
-            Col_Sex.setCellValueFactory(new PropertyValueFactory<SysUser, String>("sex"));
-            Col_Sex.setMinWidth(80);
-
-            TableColumn<SysUser, String> Col_License = new TableColumn<SysUser, String>("身份证");
-            Col_License.setCellValueFactory(new PropertyValueFactory<SysUser, String>("license"));
-            Col_License.setMinWidth(180);
-
-            TableColumn<SysUser, String> Col_smgw = new TableColumn<SysUser, String>("涉密岗位");
-            Col_smgw.setCellValueFactory(new PropertyValueFactory<SysUser, String>("smgw"));
-            Col_smgw.setMinWidth(100);
-
-            TableColumn<SysUser, String> Col_smlevel = new TableColumn<SysUser, String>("涉密等级");
-            Col_smlevel.setCellValueFactory(new PropertyValueFactory<SysUser, String>("smdj"));
-            Col_smlevel.setMinWidth(100);
-
-            TableColumn<SysUser, String> Col_isChecked = new TableColumn<SysUser, String>("是否审查");
-            Col_isChecked.setCellValueFactory(new PropertyValueFactory<SysUser, String>("isChecked"));
-            Col_isChecked.setMinWidth(80);
-
-            TableColumn<SysUser, String> Col_InputDate = new TableColumn<SysUser, String>("上报日期");
-            Col_InputDate.setCellValueFactory(new PropertyValueFactory<SysUser, String>("inputDate"));
-            Col_InputDate.setMinWidth(120);
-
-            table.getColumns().addAll(numCol, Col_Area, Col_Office, Col_Name, Col_Role, Col_Sex, Col_License, Col_smgw, Col_smlevel, Col_isChecked, Col_InputDate);
+            table.getColumns().addAll(numCol);
             if (lastIndex == pageIndex) {
                 table.setItems(FXCollections.observableArrayList(data.subList(pageIndex * rowsPerPage(), pageIndex * rowsPerPage() + displace)));
             } else {

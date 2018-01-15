@@ -1,8 +1,11 @@
 package com.gwxa.service;
 
 import java.io.UnsupportedEncodingException;
+import java.util.List;
 
 import com.gwxa.base.constant.SystemConstant;
+import com.gwxa.base.support.AbstractService;
+import com.gwxa.base.utils.ClassUtil;
 import com.gwxa.base.utils.Cryptos;
 import com.gwxa.base.utils.DBUtil;
 import com.gwxa.base.utils.Hex;
@@ -10,7 +13,7 @@ import com.gwxa.base.utils.Paramater;
 import com.gwxa.mapper.SysUserMapper;
 import com.gwxa.model.SysUser;
 
-public class SysUserService {
+public class SysUserService extends AbstractService<SysUser>{
 
 	private SysUserMapper sysUserMapper = DBUtil.getSession().getMapper(SysUserMapper.class);
 
@@ -25,5 +28,10 @@ public class SysUserService {
 		}
 		return false;
 
+	}
+
+	public List<SysUser> list(Paramater para) {
+		Paramater paras = Paramater.bulidByMaps(getTableName(), para.getPara());
+		return sysUserMapper.selectByKeys(paras);
 	}
 }

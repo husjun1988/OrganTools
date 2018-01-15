@@ -27,11 +27,10 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
-public class Organview extends BaseView {
+public class OrganView extends BaseView {
 	private Pagination pagination;
 
 	final ObservableList<SysUser> data = FXCollections.observableArrayList(
-		new SysUser("123", "123")
 	);
 
 	@Override
